@@ -107,7 +107,7 @@ def LFAnalysis(Evts, VB=False):
         toret.append([pmE, ppE, ctpppm, ttpmz, ttppz, wgt])
     return toret
 
-def CutAnalysis(Evts, EMin=0.010, OACut=10):
+def CutAnalysis(Evts, EMin=0.010, OACut=10, VB=False):
     """Take the lab-frame information and perform some cuts:
         EMin: minimum energy (GeV) of each electron/positron track to identify as a distinct track
             default: 10 MeV = 0.010 GeV
@@ -121,7 +121,7 @@ def CutAnalysis(Evts, EMin=0.010, OACut=10):
 
     toret = []
     for evti, evt in enumerate(Evts):
-        if evti % 100000 == 0:
+        if evti % 100000 == 0 and VB:
             print([evti, len(Evts), evti/len(Evts)])
         pmE, ppE, ctpppm, ttpmz, ttppz, wgt = evt
 
